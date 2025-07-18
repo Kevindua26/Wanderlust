@@ -1,0 +1,47 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <h1 style="margin: 20px 0 30px 0;">Edit listing</h1>
+    <hr>
+    <form action="/listing/<%=listing._id%>?_method=PUT" method="post" class="needs-validation" novalidate>
+      <div class="mb-4">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="listing[title]" id="title" value="<%=listing.title%>" placeholder="e.g. Cozy Beach Villa" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="listing[description]" id="description" placeholder="Describe your property, amenities, and highlights" required><%=listing.description%></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="image" class="form-label">Image URL</label>
+        <input type="text" class="form-control" name="listing[image]" id="image" value="<%=listing.image%>" placeholder="Paste an image URL (e.g. https://...)" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" name="listing[price]" id="price" value="<%=listing.price%>" placeholder="Enter price in INR" required>
+      </div>
+
+      <div class="row">
+        <div class="mb-4 col-md-8">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" name="listing[location]" id="location" value="<%=listing.location%>" placeholder="e.g. Bali, Seminyak" required>
+        </div>
+        
+        <div class="mb-5 col-md-4">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" class="form-control" name="listing[country]" id="country" value="<%=listing.country%>" placeholder="e.g. Indonesia" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <input type="submit" class="btn btn-dark edit-btn" value="Edit">
+      </div>
+      
+    </form>
+  </div>
+  
+</div>
