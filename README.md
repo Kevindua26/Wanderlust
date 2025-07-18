@@ -130,7 +130,7 @@ Wanderlust/
 
 ## 📚 License
 
-[MIT](LICENSE)
+[MIT](https://github.com/Kevindua26/Wanderlust/blob/main/LICENSE)
 
 ---
 
