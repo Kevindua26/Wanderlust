@@ -12,10 +12,23 @@ const ejsMate = require('ejs-mate');
 const wrapAsync = require('./utils/WrapAsync.js');
 const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema, reviewSchema } = require('./schema.js');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const listings = require('./routes/listings.js');
 const listing = require('./routes/listing.js');
 const reviews = require('./routes/review.js');
+
+const sessionOptions = { 
+  secret: "mysupersecretstring", 
+  resave: false, 
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    httpOnly: true
+  }
+}
 
 // mongoDB connection
 if (!process.env.MONGO_URL) {
@@ -45,8 +58,19 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+app.use(session(sessionOptions));
+app.use(flash());
+
 app.get('/', (req, res) => {
   res.send('I am root');
+})
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.updated = req.flash("updated");
+  res.locals.deleted = req.flash("deleted");
+  res.locals.error = req.flash("error");
+  next();
 })
 
 app.use("/listings", listings);
