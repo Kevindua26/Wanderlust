@@ -14,10 +14,14 @@ const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema, reviewSchema } = require('./schema.js');
 const session = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user.js');
 
-const listings = require('./routes/listings.js');
-const listing = require('./routes/listing.js');
-const reviews = require('./routes/review.js');
+const listingsRouter = require('./routes/listings.js');
+const listingRouter = require('./routes/listing.js');
+const reviewsRouter = require('./routes/review.js');
+const userRouter = require('./routes/user.js');
 
 const sessionOptions = { 
   secret: "mysupersecretstring", 
@@ -61,8 +65,21 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(session(sessionOptions));
 app.use(flash());
 
-app.get('/', (req, res) => {
-  res.send('I am root');
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.get('/demoUser', async(req, res) => {
+  let fakeUser = new User({
+    email: "student@gmail.com",
+    username: "student"
+  });
+
+  let registeredUser = await User.register(fakeUser, "student@123");
+  res.send(registeredUser);
 })
 
 app.use((req, res, next) => {
@@ -73,9 +90,14 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use("/listings", listings);
-app.use("/listing", listing);
-app.use("/listings/:id/reviews", reviews);
+app.get('/', (req, res) => {
+  res.send('I am root');
+})
+
+app.use("/listings", listingsRouter);
+app.use("/listing", listingRouter);
+app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/", userRouter);
 
 app.use("/", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found."));
