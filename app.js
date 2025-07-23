@@ -21,6 +21,7 @@ const User = require('./models/user.js');
 const listingsRouter = require('./routes/listings.js');
 const listingRouter = require('./routes/listing.js');
 const reviewsRouter = require('./routes/review.js');
+const profileRouter = require('./routes/profile.js');
 const userRouter = require('./routes/user.js');
 
 const sessionOptions = { 
@@ -84,8 +85,7 @@ app.get('/demoUser', async(req, res) => {
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
-  res.locals.updated = req.flash("updated");
-  res.locals.deleted = req.flash("deleted");
+  res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
   next();
 })
@@ -97,6 +97,7 @@ app.get('/', (req, res) => {
 app.use("/listings", listingsRouter);
 app.use("/listing", listingRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/profile", profileRouter);
 app.use("/", userRouter);
 
 app.use("/", (req, res, next) => {

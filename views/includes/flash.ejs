@@ -5,16 +5,9 @@
   </div>
 <% } %>
 
-<% if (deleted && deleted.length) { %>
-  <div class="alert alert-danger alert-dismissible fade show mt-3 col-6 offset-3" role="alert">
-    <%= deleted %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% } %>
-
-<% if (updated && updated.length) { %>
+<% if (currentUser && currentUser.length) { %>
   <div class="alert alert-success alert-dismissible fade show mt-3 col-6 offset-3" role="alert">
-    <%= updated %>
+    <%= currentUser %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% } %>
