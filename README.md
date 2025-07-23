@@ -1,26 +1,28 @@
 # Wanderlust
 
-Wanderlust is a full-stack web application inspired by Airbnb, built with the MERN stack (MongoDB, Express, React, and Node.js). This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
+Wanderlust is a full-stack web application inspired by Airbnb, built with Node.js, Express, MongoDB, and EJS templating. This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
 
 ## ✨ About the Project
 
-Wanderlust aims to replicate the core functionality of Airbnb, allowing users to book unique places to stay, host their own listings, and manage reservations. This project is my major venture into the MERN stack, and it's shaped by my commitment to learning in public—sharing not only my successes but also the roadblocks and lessons encountered along the way.
+Wanderlust replicates the core functionality of Airbnb, allowing users to book unique places to stay, host their own listings, and manage reservations. The project is shaped by my commitment to learning in public—sharing not only my successes but also the roadblocks and lessons encountered along the way.
 
 ## 🚀 Features
 
-- User authentication and profile management
+- User authentication and profile management (in progress)
 - Browse available stays and detailed property pages
 - Host dashboard for listing management
-- Booking and reservation system
-- Reviews and ratings
-- Responsive, modern UI
+- Booking and reservation system (in progress)
+- Reviews and ratings (with flash messages)
+- Responsive, modern UI with Bootstrap
+- Error handling with custom ExpressError utility
+- Flash messages for user feedback
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** EJS (Embedded JavaScript Templates), Bootstrap, CSS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (with Mongoose ODM)
-- **Authentication:** (To be implemented)
+- **Authentication:** Passport.js (in progress)
 - **Cloud & Storage:** (To be implemented)
 
 ## 🤝 Learning in Public
