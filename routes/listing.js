@@ -7,10 +7,17 @@ const listingController = require('../controllers/listings.js');
 // Edit route
 router.get('/:id/edit', isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
-// Update route
-router.put('/:id', isLoggedIn, isOwner, validateListing, wrapAsync(listingController.updateListing));
-
-// Delete route
-router.delete('/:id', isLoggedIn, isOwner, wrapAsync(listingController.deleteListing));
+router.route('/:id')
+  .put(
+    isLoggedIn, 
+    isOwner,   
+    validateListing, 
+    wrapAsync(listingController.updateListing)
+  )
+  .delete(
+    isLoggedIn, 
+    isOwner, 
+    wrapAsync(listingController.deleteListing)
+  );
 
 module.exports = router;
