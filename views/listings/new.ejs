@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-8 offset-2">
     <h1 style="margin: 20px 0 30px 0;">Create a new listing</h1>
-    <form action="/listings" method="post" class="needs-validation" novalidate>
+    <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
       <div class="mb-4">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" name="listing[title]" id="title" placeholder="e.g. Cozy Beach Villa" required>
@@ -16,17 +16,18 @@
         <textarea class="form-control" name="listing[description]" id="description" placeholder="Describe your property, amenities, and highlights" required></textarea>
       </div>
 
-      <div class="mb-4">
+      <!-- <div class="mb-4">
         <label for="image" class="form-label">Image URL</label>
         <input type="text" class="form-control" name="listing[image]" id="image" placeholder="Paste an image URL (e.g. https://...)" >
         <div class="invalid-feedback">Paste the Image URL here</div>
+      </div> -->
+
+      <div class="mb-4">
+        <label for="image" class="form-label">Upload Image</label>
+        <input type="file" class="form-control" name="listing[image]" id="image">
+        <div class="invalid-feedback">Paste the Image URL here</div>
       </div>
 
-      <!-- <div class="mb-4">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" name="listing[price]" id="price" placeholder="Enter price in INR" required>
-        <div class="invalid-feedback">Enter valid price</div>
-      </div> -->
       <div class="mb-4">
         <label for="price" class="form-label">Price</label>
         <input type="text" class="form-control" name="listing[price]" id="price" placeholder="Enter price in INR" required>
