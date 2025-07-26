@@ -67,7 +67,7 @@ To run Wanderlust locally, follow these steps:
 
    Create a `.env` file in the root directory:
 
-   ```
+   ```env
    MONGO_URL=your_mongodb_connection_string
    PORT=8080
    CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
