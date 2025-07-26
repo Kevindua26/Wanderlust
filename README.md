@@ -1,6 +1,6 @@
 # Wanderlust
 
-Wanderlust is a full-stack web application inspired by Airbnb, built with Node.js, Express, MongoDB, and EJS templating. This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
+Wanderlust is a full-stack web application inspired by Airbnb, built with Node.js, Express, MongoDB, and EJS templating. The project features a modern UI, image uploads via Cloudinary, and robust review and listing management. This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
 
 ## ✨ About the Project
 
@@ -13,7 +13,8 @@ Wanderlust replicates the core functionality of Airbnb, allowing users to book u
 - Host dashboard for listing management
 - Booking and reservation system (in progress)
 - Reviews and ratings (with flash messages)
-- Responsive, modern UI with Bootstrap
+- Responsive, modern UI with EJS and Bootstrap
+- Image upload and storage via Cloudinary (Multer integration)
 - Error handling with custom ExpressError utility
 - Flash messages for user feedback
 
@@ -23,7 +24,8 @@ Wanderlust replicates the core functionality of Airbnb, allowing users to book u
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (with Mongoose ODM)
 - **Authentication:** Passport.js (in progress)
-- **Cloud & Storage:** (To be implemented)
+- **Image Uploads:** Multer + Cloudinary
+- **Cloud & Storage:** Cloudinary
 
 ## 🤝 Learning in Public
 
@@ -44,6 +46,7 @@ To run Wanderlust locally, follow these steps:
 - Node.js (v14+ recommended)
 - MongoDB (local or Atlas cloud)
 - npm (comes with Node.js)
+- Cloudinary account (for image uploads)
 
 ### Installation
 
@@ -67,6 +70,9 @@ To run Wanderlust locally, follow these steps:
    ```
    MONGO_URL=your_mongodb_connection_string
    PORT=8080
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
    ```
 
 4. **Initialize the database with sample data**
@@ -91,6 +97,10 @@ To run Wanderlust locally, follow these steps:
 
 ```
 Wanderlust/
+  ├── controllers/
+  │   ├── listings.js
+  │   ├── review.js
+  │   └── user.js
   ├── init/
   │   ├── data.js
   │   └── index.js
@@ -112,18 +122,22 @@ Wanderlust/
   │   ├── includes/
   │   ├── layouts/
   │   └── listings/
+  ├── README.md
   ├── app.js
+  ├── cloudConfig.js
+  ├── middleware.js
   ├── package.json
-  ├── schema.js
-  └── README.md
+  └── schema.js
 ```
 
 - `init/` — Database initialization scripts and sample data
 - `models/` — MongoDB models using Mongoose
+- `controllers/` — Route handler logic for listings, reviews, and users
 - `public/` — Static files (CSS, JS, images)
 - `routes/` — Express route handlers
 - `utils/` — Utility functions and error handling
 - `views/` — EJS templates and layouts
+- `cloudConfig.js` — Cloudinary and Multer configuration
 
 ## 🙌 Acknowledgements
 
