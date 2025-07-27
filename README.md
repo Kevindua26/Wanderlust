@@ -95,7 +95,7 @@ To run Wanderlust locally, follow these steps:
 
 ## 🗃️ Folder Structure
 
-```
+```bash
 Wanderlust/
   ├── controllers/
   │   ├── listings.js
