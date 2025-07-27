@@ -4,9 +4,18 @@
   <div class="col-8 offset-2">
     <h1 style="margin: 20px 0 30px 0;">Edit listing</h1>
     <hr>
-    <form action="/listing/<%=listing._id%>?_method=PUT" method="post" class="needs-validation" novalidate>
+    <form action="/listing/<%=listing._id%>?_method=PUT" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+
+      <div class="col-8 offset-2">
+        <img src="<%=originalImage%>" class="card-img-top show-img" alt="<%=listing.title%>" style="height: 100%;">
+        <div class="mb-4 mt-2">
+          <label for="image" class="form-label">Upload New Image</label>
+          <input type="file" class="form-control" name="listing[image]" id="image">
+        </div>
+      </div>
+
       <div class="mb-4">
-        <label for="title" class="form-label">Title</label>
+        <label for="title" class="form-label">Title</label> 
         <input type="text" class="form-control" name="listing[title]" id="title" value="<%=listing.title%>" placeholder="e.g. Cozy Beach Villa" required>
       </div>
 
@@ -15,10 +24,10 @@
         <textarea class="form-control" name="listing[description]" id="description" placeholder="Describe your property, amenities, and highlights" required><%=listing.description%></textarea>
       </div>
 
-      <div class="mb-4">
-        <label for="image" class="form-label">Image URL</label>
-        <input type="text" class="form-control" name="listing[image]" id="image" value="<%=listing.image%>" placeholder="Paste an image URL (e.g. https://...)" required>
-      </div>
+      <!-- <div class="mb-4">
+        <label for="image" class="form-label">Upload New Image</label>
+        <input type="file" class="form-control" name="listing[image]" id="image">
+      </div> -->
 
       <div class="mb-4">
         <label for="price" class="form-label">Price</label>
