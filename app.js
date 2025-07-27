@@ -92,7 +92,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  res.send('I am root');
+  res.redirect('/listings');
 })
 
 app.use("/listings", listingsRouter);

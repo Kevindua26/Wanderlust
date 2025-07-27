@@ -1,23 +1,29 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add Listing</a>
+        <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Wanderlust your home</a>
+
         <% if (!currentUser) { %>
-        <a class="nav-link" href="/signup">Signup</a>
-        <a class="nav-link" href="/login">Login</a>
+          <p class="nav-link">
+            <a href="/signup" style="text-decoration: none; color: black;"><b>Signup</b></a>/
+            <a href="/login" style="text-decoration: none; color: black;"><b>Login</b></a>
+          </p>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-k83MyoiH43lpI6Y-TY17A2JCPudD_7Av9A&s" alt="profile_pic" style="width: 40px; height: 40px; border-radius: 50%;">
         <% } %>
+
         <% if (currentUser) { %>
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <img src="<%=currentUser.image%>" alt="profile_pic" style="width: 40px; height: 40px; border-radius: 50%;">
         <% } %>
+
       </div>
     </div>
   </div>
