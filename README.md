@@ -1,6 +1,6 @@
 # Wanderlust
 
-Wanderlust is a full-stack web application inspired by Airbnb, built with Node.js, Express, MongoDB, and EJS templating. The project features a modern UI, image uploads via Cloudinary, and robust review and listing management. This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
+Wanderlust is a full-stack web application inspired by Airbnb, built with Node.js, Express, MongoDB, and EJS templating. The project features a modern UI, secure authentication, image uploads via Cloudinary, and robust review and listing management. This project is the result of my journey to learn, build, and share in public, reflecting my passion for creating real-world applications and growing as a developer.
 
 ## ✨ About the Project
 
@@ -8,24 +8,26 @@ Wanderlust replicates the core functionality of Airbnb, allowing users to book u
 
 ## 🚀 Features
 
-- User authentication and profile management (in progress)
+- User authentication and profile management
 - Browse available stays and detailed property pages
 - Host dashboard for listing management
-- Booking and reservation system (in progress)
+- Booking and reservation system
 - Reviews and ratings (with flash messages)
 - Responsive, modern UI with EJS and Bootstrap
 - Image upload and storage via Cloudinary (Multer integration)
 - Error handling with custom ExpressError utility
 - Flash messages for user feedback
+- MongoDB session storage with connect-mongo
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** EJS (Embedded JavaScript Templates), Bootstrap, CSS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (with Mongoose ODM)
-- **Authentication:** Passport.js (in progress)
+- **Authentication:** Passport.js
 - **Image Uploads:** Multer + Cloudinary
 - **Cloud & Storage:** Cloudinary
+- **Session Store:** connect-mongo
 
 ## 🤝 Learning in Public
 
@@ -60,7 +62,7 @@ To run Wanderlust locally, follow these steps:
 2. **Install dependencies**
 
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 3. **Set up environment variables**
@@ -73,6 +75,7 @@ To run Wanderlust locally, follow these steps:
    CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
    CLOUDINARY_API_KEY=your_cloudinary_api_key
    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+   SESSION_SECRET=your_session_secret
    ```
 
 4. **Initialize the database with sample data**
@@ -126,6 +129,7 @@ Wanderlust/
   ├── app.js
   ├── cloudConfig.js
   ├── middleware.js
+  ├── package-lock.json
   ├── package.json
   └── schema.js
 ```
@@ -138,6 +142,11 @@ Wanderlust/
 - `utils/` — Utility functions and error handling
 - `views/` — EJS templates and layouts
 - `cloudConfig.js` — Cloudinary and Multer configuration
+- `middleware.js` — Custom Express middleware
+
+## 🚀 Deployment
+
+This is the final commit for deployment. Please ensure all environment variables are set and all dependencies are installed with `--legacy-peer-deps` if needed. For production, use a process manager like PM2 and set up environment variables securely.
 
 ## 🙌 Acknowledgements
 
