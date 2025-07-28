@@ -1,4 +1,7 @@
 {
+  "engine": {
+    "node": "22.12.0"
+  },
   "name": "major-project",
   "version": "1.0.0",
   "main": "index.js",
@@ -12,7 +15,8 @@
   "dependencies": {
     "cloudinary": "^2.7.0",
     "connect-flash": "^0.1.1",
-    "dotenv": "^16.5.0",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
@@ -20,7 +24,7 @@
     "express-sessions": "^1.0.6",
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
-    "mongoose": "^8.15.1",
+    "mongoose": "^8.16.5",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.10",

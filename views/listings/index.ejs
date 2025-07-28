@@ -152,9 +152,10 @@
       <div class="card-img-overlay"><%= listings.description %></div>
       <div class="card-body">
         <p class="card-text">
-          <b><%= listings.title %></b><br />&#8377; <%=
-          listings.price.toLocaleString('en-IN') %> / night
-          <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+          <b><%= listings.title %></b><br />&#8377;
+          <%=listings.price.toLocaleString('en-IN') %><i class="tax-info">
+            + <% let tax = listings.price * 0.18; %><%=tax%></i>
+          / night
         </p>
       </div>
     </div>
@@ -169,17 +170,17 @@
 </ul> -->
 
 <script>
-  let taxSwitch = document.getElementById('flexSwitchCheckDefault');
-  taxSwitch.addEventListener('click', () => {
-    let taxInfo = document.querySelectorAll('.tax-info');
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.querySelectorAll(".tax-info");
     if (taxSwitch.checked) {
-      taxInfo.forEach(info => {
-        info.style.display = 'inline';
+      taxInfo.forEach((info) => {
+        info.style.display = "inline";
       });
     } else {
-      taxInfo.forEach(info => {
-        info.style.display = 'none';
+      taxInfo.forEach((info) => {
+        info.style.display = "none";
       });
     }
-  })
+  });
 </script>

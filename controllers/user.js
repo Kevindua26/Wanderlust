@@ -13,7 +13,6 @@ module.exports.userSignup = async(req, res) => {
       username,
     });
     const registeredUser = await User.register(newUser, password);
-    console.log(registeredUser);
 
     req.login(registeredUser, (err) => {
       if (err) {

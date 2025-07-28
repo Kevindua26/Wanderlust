@@ -1,29 +1,75 @@
+<style>
+  .form-control-search {
+    border-radius: 30px;
+  }
+  .btn-search {
+    border-radius: 50%;
+    background-color: #fe424d;
+    color: #fff;
+  }
+  .btn-search:hover {
+    background-color: #fff;
+    border: 1px solid #fe424d;
+    color: #fe424d;
+  }
+</style>
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-solid fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings/new">Add New</a>
+      </div>
+      <div id="search_listing" class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control form-control-search me-2"
+            type="search"
+            placeholder="Search..."
+          />
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Wanderlust your home</a>
-
+        <p class="nav-link" style="margin: 0; ">
+        
         <% if (!currentUser) { %>
-          <p class="nav-link">
-            <a href="/signup" style="text-decoration: none; color: black;"><b>Signup</b></a>/
-            <a href="/login" style="text-decoration: none; color: black;"><b>Login</b></a>
-          </p>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-k83MyoiH43lpI6Y-TY17A2JCPudD_7Av9A&s" alt="profile_pic" style="width: 40px; height: 40px; border-radius: 50%;">
+          <a href="/signup" style="text-decoration: none; color: black"
+            ><b>Signup</b></a
+          >/
+          <a href="/login" style="margin-right: 10px; text-decoration: none; color: black"
+            ><b>Login</b></a
+          >
+        <a href="">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-k83MyoiH43lpI6Y-TY17A2JCPudD_7Av9A&s"
+            alt="profile_pic"
+            style="width: 40px; height: 40px; border-radius: 50%"
+          />
+        </a>
+        <% } %> <% if (currentUser) { %>
+        <a href="/logout" style="margin-right: 10px; text-decoration: none; color: black"><b>Logout</b></a>
+        <a href="/profile/<%=currentUser._id%>">
+          <img
+            src="<%=currentUser.image%>"
+            alt="profile_pic"
+            style="width: 40px; height: 40px; border-radius: 50%"
+          />
+        </a>
         <% } %>
-
-        <% if (currentUser) { %>
-        <a class="nav-link" href="/logout"><b>Logout</b></a>
-        <img src="<%=currentUser.image%>" alt="profile_pic" style="width: 40px; height: 40px; border-radius: 50%;">
-        <% } %>
-
+        </p>
       </div>
     </div>
   </div>

@@ -14,6 +14,7 @@ const wrapAsync = require('./utils/WrapAsync.js');
 const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema, reviewSchema } = require('./schema.js');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -25,8 +26,27 @@ const reviewsRouter = require('./routes/review.js');
 const profileRouter = require('./routes/profile.js');
 const userRouter = require('./routes/user.js');
 
+// mongoDB connection
+if (!process.env.MONGO_URL) {
+  console.error('MONGO_URL is not defined in .env file');
+}
+const MONGO_URL = process.env.MONGO_URL;
+
+const store = MongoStore.create({
+  mongoUrl: MONGO_URL,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600, // time in seconds
+})
+
+store.on("error", (err) => {
+  console.log("SESSION STORE ERROR", err);  
+})
+
 const sessionOptions = { 
-  secret: "mysupersecretstring", 
+  store,
+  secret: process.env.SECRET, 
   resave: false, 
   saveUninitialized: true,
   cookie: {
@@ -35,12 +55,6 @@ const sessionOptions = {
     httpOnly: true
   }
 }
-
-// mongoDB connection
-if (!process.env.MONGO_URL) {
-  console.error('MONGO_URL is not defined in .env file');
-}
-const MONGO_URL = process.env.MONGO_URL;
 
 main().then(() => {
   console.log('Connected to MongoDB\n');
